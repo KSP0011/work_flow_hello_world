@@ -2,13 +2,13 @@ name: print-name
 
 on:
   push:
-    branches: [ "main" ]
-  workflow_dispatch:
+    branches:
+      - main
 
 jobs:
-  print-message:
+  print:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Added print-name
-        run: echo "Added print-name"
+      - name: Print a message
+        run: echo "Hello from the print-name workflow!"
