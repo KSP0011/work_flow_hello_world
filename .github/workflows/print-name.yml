@@ -10,5 +10,5 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print a message to the console
-        run: echo "The workflow has executed successfully!"
+      - name: Added print-name
+        run: echo "Added print-name"
