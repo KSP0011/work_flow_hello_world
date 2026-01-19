@@ -1,14 +1,34 @@
-name: print-name
+name: Artifact Workflow Example
 
 on:
   push:
-    branches:
-      - main
+    branches: [ "main" ]
+  workflow_dispatch:
 
 jobs:
-  print:
+  create_artifact:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Print a message
-        run: echo "Hello from the print-name workflow!"
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Create a sample text file
+        run: echo "Sample artifact content" > sample.txt
+
+      - name: Upload the file as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sample-text
+          path: sample.txt
+
+  use_artifact:
+    runs-on: ubuntu-latest
+    needs: create_artifact # This ensures the first job finishes first
+    steps:
+      - name: Download the artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: sample-text
+
+      - name: Display the file content
+        run: cat sample.txt
