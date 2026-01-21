@@ -34,7 +34,6 @@ jobs:
           while ! nc -z localhost 5432; do
             sleep 1
           done
-
       - name: Confirm PostgreSQL availability
         run: |
           echo "PostgreSQL is ready!"
