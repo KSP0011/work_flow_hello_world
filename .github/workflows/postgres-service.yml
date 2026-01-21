@@ -3,6 +3,7 @@ name: PostgreSQL Service Check
 on:
   push:
   pull_request:
+  workflow_dispatch:
 
 jobs:
   postgres-check:
